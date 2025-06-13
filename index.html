@@ -170,12 +170,16 @@
 
   <div class="toggle-wrapper" onclick="toggleTheme()">🌓 Toggle Theme</div>
 
-  <script>
-    fetch('https://api.countapi.xyz/hit/kanishk-portfolio/visits')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('viewNumber').innerText = data.value;
-      });
+ <script>
+  fetch('https://api.countapi.xyz/hit/kanishk-portfolio/visits')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('viewNumber').innerText = data.value;
+    })
+    .catch(err => {
+      console.error('CountAPI error:', err);
+      document.getElementById('viewNumber').innerText = 'N/A';
+    });
 
     let isDark = true;
     function toggleTheme() {
